@@ -3,7 +3,7 @@
 # Dotfiles
 echo "• Putting dotfiles in your home path: $HOME"
 
-files(
+files=(
   "./.bash_aliases"
   "./.bashrc"
 )
