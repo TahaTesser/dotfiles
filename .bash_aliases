@@ -1,5 +1,4 @@
 # aliases
-
 alias f="flutter"
 alias d="dart"
 alias fd="flutter doctor -v"
