@@ -3,5 +3,5 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Flutter
-export PATH="$PATH":"/workspaces/flutter/bin"
+export PATH="$PATH":"/workspace/flutter/bin"
 export FLUTTER_GIT_URL="git@github.com:NevercodeHQ/flutter.git"
