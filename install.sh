@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 
 # Dotfiles
-echo "• Putting dotfiles in your home path: $HOME"
+echo "• Updating .bashrc in your: $HOME"
 
-files=(
-  "./.bash_aliases"
-  "./.bashrc"
-)
+echo 'export PATH="$PATH":"/workspace/flutter/bin"' >> ~/.bashrc 
+echo 'export FLUTTER_GIT_URL="git@github.com:NevercodeHQ/flutter.git"' >> ~/.bashrc 
 
-for file in ${files[@]}; do
-    if [[ $(file $file | awk '{print $2}') == "directory" ]]; then
-      [ -r "$file" ] && cp -r "$file" $HOME && echo "  - Copied folder $file"
+echo "• Adding .bash_aliases in your: $HOME"
+nano ~/.bash_aliases
 
-    else
-      [ -r "$file" ] && cp "$file" $HOME && echo "  - Copied file $file"
-    fi;
-done;
-unset file files;
-echo ""
+echo "• Updating .bash_aliases in your: $HOME"
+echo '# aliases' >> ~/.bash_aliases
+echo 'alias f="flutter"' >> ~/.bash_aliases
+echo 'alias fd="flutter doctor -v"' >> ~/.bash_aliases
+echo 'alias fp="flutter pub get"' >> ~/.bash_aliases
+echo 'alias fr="flutter run"' >> ~/.bash_aliases
+echo 'alias ft="flutter test"' >> ~/.bash_aliases
