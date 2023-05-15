@@ -5,7 +5,7 @@
 echo "• Updating .bashrc in your: $HOME"
 echo '' >> ~/.bashrc 
 echo 'export PATH="$PATH":"/workspace/flutter/bin"' >> ~/.bashrc 
-echo 'export FLUTTER_GIT_URL="git@github.com:NevercodeHQ/flutter.git"' >> ~/.bashrc 
+echo 'export FLUTTER_GIT_URL="git@github.com:TahaTesser/flutter.git"' >> ~/.bashrc 
 echo '' >> ~/.bashrc 
 
 echo "• Adding .bash_aliases in your: $HOME"
