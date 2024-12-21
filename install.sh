@@ -2,7 +2,7 @@
 
 # Define installation directory
 INSTALL_DIR="/usr/local"
-FLUTTER_DIR="${INSTALL_DIR}/flutter"
+FLUTTER_DIR="/workspaces/flutter"
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -11,26 +11,13 @@ NC='\033[0m' # No Color
 
 echo -e "${GREEN}Starting Flutter installation...${NC}"
 
-# Check if git is installed
-if ! command -v git &> /dev/null; then
-    echo -e "${RED}Git is not installed. Please install git first.${NC}"
+# Check if Flutter exists in /workspaces/flutter
+if [ ! -d "$FLUTTER_DIR" ]; then
+    echo -e "${RED}Flutter not found in ${FLUTTER_DIR}. Please ensure Flutter is available in this location.${NC}"
     exit 1
 fi
 
-# Remove existing Flutter directory if it exists
-if [ -d "$FLUTTER_DIR" ]; then
-    echo "Removing existing Flutter installation..."
-    sudo rm -rf "$FLUTTER_DIR"
-fi
-
-# Clone Flutter repository
-echo "Cloning Flutter repository..."
-sudo git clone https://github.com/TahaTesser/flutter.git "$FLUTTER_DIR"
-
-# Set permissions
-echo "Setting permissions..."
-sudo chown -R $USER:$USER "$FLUTTER_DIR"
-sudo chmod -R a+rx "$FLUTTER_DIR"
+echo "Using Flutter from ${FLUTTER_DIR}"
 
 # Check if the Flutter path is already in PATH
 FLUTTER_PATH="${FLUTTER_DIR}/bin"
