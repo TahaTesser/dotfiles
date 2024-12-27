@@ -40,6 +40,9 @@ echo "Setting up Git configuration..."
 git config --global user.name "Taha Tesser"
 git config --global user.email "tessertaha@gmail.com"
 
+# Git aliases
+git config --global alias.kt '!git commit --allow-empty -m "Kick tests"'
+
 # Create .hushlogin file to disable login message
 echo "Creating .hushlogin file..."
 touch "$HOME/.hushlogin"
@@ -69,9 +72,13 @@ if ! command -v gh >/dev/null 2>&1; then
     exit 1
 fi
 
-# Authenticate with GitHub CLI
-echo "Authenticating with GitHub CLI..."
-gh auth login
+# Check if already authenticated with GitHub CLI
+if ! gh auth status >/dev/null 2>&1; then
+    echo "Authenticating with GitHub CLI..."
+    gh auth login
+else
+    echo "Already authenticated with GitHub CLI"
+fi
 
 # Generate SSH key if not already existing
 SSH_KEY="$HOME/.ssh/id_ed25519"

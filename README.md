@@ -14,6 +14,8 @@ This is my dotfiles repository.
 - Install Homebrew
 - Install Brew packages (gh, swiftformat, tmux, fvm, bruno)
 - Configure Git user name and email
+- Configure Git aliases:
+  - `git kt`: Create empty commit to trigger tests
 - Create .hushlogin file to disable login message
 - Backup existing .zshrc if it exists
 - Copy .zshrc to home directory
@@ -39,7 +41,6 @@ This is my custom zsh configuration.
 - Add Flutter environment variables
 - Flutter source, sample and editor aliases
 - Add API Keys for OpenAI and Anthropic
-
 
 ## flutter.plugin.zsh
 
