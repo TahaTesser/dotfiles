@@ -35,6 +35,10 @@ brew tap leoafarias/fvm
 brew install fvm
 brew install bruno
 
+# Create FVM versions directory
+echo "Setting up FVM directory..."
+mkdir -p "$HOME/fvm/versions"
+
 # Configure Git global settings
 echo "Setting up Git configuration..."
 git config --global user.name "Taha Tesser"
@@ -102,5 +106,9 @@ echo "Setting up Ghostty configuration..."
 GHOSTTY_CONFIG_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
 mkdir -p "$GHOSTTY_CONFIG_DIR"
 cp ./ghostty/config "$GHOSTTY_CONFIG_DIR/config"
+
+# Create Code directory
+echo "Creating Code directory..."
+mkdir -p "$HOME/Code"
 
 echo "Installation complete! Please restart your terminal or run 'source ~/.zshrc'"
