@@ -21,6 +21,7 @@ export FVM_FLUTTER_URL="https://github.com/TahaTesser/flutter.git"
 # Flutter source and sample aliases
 alias ffp="cd ~ && cd $HOME/fvm/versions/custom_flutter/packages/flutter && flutter pub get"
 alias fpp="cd ~ && cd $HOME/Code/flutter_playground && flutter pub get"
+alias m3gen="dart $HOME/fvm/versions/custom_flutter/dev/tools/gen_defaults/bin/gen_defaults.dart"
 
 # Editor aliases
 alias vs="code ."
