@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script is used to setup Flutter in GitHub Codespaces.
+
 # Define installation directory
 INSTALL_DIR="/usr/local"
 FLUTTER_DIR="/workspaces/flutter"
@@ -22,12 +24,31 @@ echo "Using Flutter from ${FLUTTER_DIR}"
 # Check if the Flutter path is already in PATH
 FLUTTER_PATH="${FLUTTER_DIR}/bin"
 
+# Install zsh if not present
+if ! command -v zsh &> /dev/null; then
+    echo "Installing zsh..."
+    apt-get update && apt-get install -y zsh
+fi
+
+# Install Oh My Zsh if not present
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
 # Function to add Flutter to different shell config files
 add_to_shell_config() {
     local config_file="$1"
+    local template_file="$2"
     
-    # Create config file if it doesn't exist
-    touch "$config_file"
+    # If template file exists, copy it
+    if [ -n "$template_file" ] && [ -f "$template_file" ]; then
+        cp "$template_file" "$config_file"
+        echo -e "${GREEN}Copied template $template_file to $config_file${NC}"
+    else
+        # Create config file if it doesn't exist
+        touch "$config_file"
+    fi
     
     # Check if Flutter path is already in the config file
     if ! grep -q "export PATH=.*${FLUTTER_PATH}" "$config_file"; then
@@ -38,9 +59,15 @@ add_to_shell_config() {
     fi
 }
 
-# Add Flutter to common shell config files
+# Add Flutter to shell config files
 add_to_shell_config "$HOME/.bashrc"
-add_to_shell_config "$HOME/.zshrc"
+add_to_shell_config "$HOME/.zshrc" "./.zshrc"
+
+# Set zsh as default shell if it isn't already
+if [ "$SHELL" != "$(which zsh)" ]; then
+    echo "Setting zsh as default shell..."
+    chsh -s $(which zsh)
+fi
 
 # Reload shell configurations
 if [ -f "$HOME/.bashrc" ]; then
@@ -58,12 +85,13 @@ echo "Running initial Flutter setup..."
 export PATH="$PATH:${FLUTTER_PATH}"
 flutter precache
 
-# Disable Windows, macOS, Android and web configurations
-echo "Disabling Windows, macOS, Android and web configurations..."
+# Disable Windows, macOS, Android, Linux and web configurations for GitHub Codespaces.
+echo "Disabling Windows, macOS, Android, Linux and web configurations..."
 flutter config --no-enable-windows-desktop
 flutter config --no-enable-macos-desktop
 flutter config --no-enable-android
 flutter config --no-enable-web
+flutter config --no-enable-linux-desktop
 
 # Verify Flutter is accessible
 if command -v flutter &> /dev/null; then
