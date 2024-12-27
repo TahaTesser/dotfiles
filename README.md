@@ -2,10 +2,10 @@
 
 This is my dotfiles repository.
 
-- [install.sh](##install.sh)
-- [.zshrc](##.zshrc)
-- [flutter.plugin.zsh](##flutter.plugin.zsh)
-- [ghostty/config](##ghostty/config)
+- [install.sh](#install.sh)
+- [.zshrc](#.zshrc)
+- [flutter.plugin.zsh](#flutter.plugin.zsh)
+- [ghostty/config](#ghostty/config)
 
 ## install.sh
 
