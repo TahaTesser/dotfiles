@@ -1,2 +1,4 @@
 theme = "Apple System Colors"
 font-size = 18
+window-height = 36
+window-width = 110

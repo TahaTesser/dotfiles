@@ -21,12 +21,22 @@ This is my custom ghostty configuration.
 - Set theme to Apple System Colors
 - Set font size to 18
 
-## setup.sh
+## install.sh
 
-This script will install Flutter and set up the environment for development in GitHub Codespaces.
+This is the installation script for my dotfiles.
 
-- Install zsh if not present
-- Install Oh My Zsh if not present
-- Install Flutter
-- Set up Flutter environment
-- Disable Windows, macOS, Android, Linux and web configurations. As I'm using GitHub Codespaces only for running Flutter tests and not for development.
+- Check if zsh is installed
+- Install oh-my-zsh
+- Install Homebrew
+- Install Brew packages (gh, swiftformat, tmux, fvm, bruno)
+- Configure Git user name and email
+- Backup existing .zshrc if it exists
+- Copy .zshrc to home directory
+- Backup and update Oh My Zsh Flutter plugin
+- Authenticate with GitHub CLI
+- Generate SSH key if not already existing
+- Check GitHub CLI is installed
+- Authenticate with GitHub CLI
+- Generate SSH key if not already existing
+- Add SSH key to GitHub
+- Set up Ghostty configuration

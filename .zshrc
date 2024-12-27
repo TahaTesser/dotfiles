@@ -3,32 +3,28 @@ ZSH_THEME="apple"
 plugins=(git flutter alias-finder gh brew)
 source $ZSH/oh-my-zsh.sh
 
-# Flutter aliases
-alias f="flutter"
-alias fd="flutter doctor -v"
-alias fp="flutter pub get"
-alias fr="flutter run"
-alias ft="flutter test"
-# Flutter source and sample aliases
-alias ffp="cd ~ && cd $HOME/flutter/packages/flutter && flutter pub get"
-alias fpp="cd ~ && cd $HOME/Code/flutter_playground && flutter pub get"
-# Editors aliases
-alias vs="code ."
-alias cr="cursor ."
-
 # JAVA
 export JAVA_HOME="/Applications/Android Studio Preview.app/Contents/jbr/Contents/Home"
 export PATH=$PATH:$JAVA_HOME/bin
-# Android
+
+# Android SDK
 export ANDROID_SDK_ROOT=$HOME/android-sdk
 export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
-# Flutter
+
+# Flutter, Dart, and FVM
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-export PATH="$PATH":"$HOME/flutter/bin"
-export PATH="$PATH":"$HOME/dart-sdk/bin"
-export FLUTTER_GIT_URL="git@github.com:TahaTesser/flutter.git"
-# Node
-export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+export PATH="$PATH":"$HOME/fvm/versions/custom_flutter/bin"
+export PATH="$PATH":"$HOME/fvm/versions/custom_flutter/bin/cache/dart-sdk/bin"
+export FLUTTER_GIT_URL="https://github.com/TahaTesser/flutter.git"
+export FVM_FLUTTER_URL="https://github.com/TahaTesser/flutter.git"
+
+# Flutter source and sample aliases
+alias ffp="cd ~ && cd $HOME/fvm/versions/custom_flutter/packages/flutter && flutter pub get"
+alias fpp="cd ~ && cd $HOME/Code/flutter_playground && flutter pub get"
+
+# Editor aliases
+alias vs="code ."
+alias cr="cursor ."
 
 # API Keys
 export OPENAI_API_KEY="<OPENAI_API_KEY>"
