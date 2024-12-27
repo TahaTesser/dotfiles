@@ -14,6 +14,13 @@ This is my custom zsh configuration.
 - Add Node environment variables
 - Add API Keys for OpenAI and Anthropic
 
+## ghostty/config
+
+This is my custom ghostty configuration.
+
+- Set theme to Apple System Colors
+- Set font size to 18
+
 ## setup.sh
 
 This script will install Flutter and set up the environment for development in GitHub Codespaces.
