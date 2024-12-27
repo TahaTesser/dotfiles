@@ -1,4 +1,5 @@
-theme = "Apple System Colors"
+theme = catppuccin-mocha
 font-size = 18
 window-height = 36
 window-width = 110
+title = "Ghostty"
