@@ -40,6 +40,10 @@ echo "Setting up Git configuration..."
 git config --global user.name "Taha Tesser"
 git config --global user.email "tessertaha@gmail.com"
 
+# Create .hushlogin file to disable login message
+echo "Creating .hushlogin file..."
+touch "$HOME/.hushlogin"
+
 # Set up zsh configuration
 echo "Setting up zsh configuration..."
 

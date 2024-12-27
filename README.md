@@ -14,6 +14,7 @@ This is my dotfiles repository.
 - Install Homebrew
 - Install Brew packages (gh, swiftformat, tmux, fvm, bruno)
 - Configure Git user name and email
+- Create .hushlogin file to disable login message
 - Backup existing .zshrc if it exists
 - Copy .zshrc to home directory
 - Backup and update Oh My Zsh Flutter plugin
