@@ -106,6 +106,7 @@ echo "Setting up Ghostty configuration..."
 GHOSTTY_CONFIG_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
 mkdir -p "$GHOSTTY_CONFIG_DIR"
 cp ./ghostty/config "$GHOSTTY_CONFIG_DIR/config"
+cp -r ./ghostty/themes "$GHOSTTY_CONFIG_DIR/themes"
 
 # Create Code directory
 echo "Creating Code directory..."

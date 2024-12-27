@@ -26,7 +26,7 @@ This is my dotfiles repository.
 - Authenticate with GitHub CLI
 - Generate SSH key if not already existing
 - Add SSH key to GitHub
-- Set up Ghostty configuration
+- Set up Ghostty configuration (themes and config)
 
 ## .zshrc
 
