@@ -8,7 +8,7 @@ This is my dotfiles repository.
 - Check if zsh is installed
 - Install oh-my-zsh
 - Install Homebrew
-- Install Brew packages (gh, swiftformat, tmux, bruno)
+- Install Brew packages (ghostty, gh, swiftformat, tmux, bruno)
 - Install Tmux Plugin Manager
 - Install Catppuccin for tmux
 - Copy and source tmux configuration
