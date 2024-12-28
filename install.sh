@@ -112,6 +112,10 @@ else
     echo "SSH key already exists at $SSH_KEY"
 fi
 
+# Set up GitHub CLI aliases
+echo "Setting up GitHub CLI aliases..."
+gh alias set prw 'pr list -A TahaTessr -w'
+
 # Set up Ghostty configuration
 echo "Setting up Ghostty configuration..."
 GHOSTTY_CONFIG_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
