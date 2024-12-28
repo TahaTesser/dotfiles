@@ -36,6 +36,12 @@ brew install swiftformat
 brew install tmux
 brew install bruno
 
+# Set up VSCode configuration
+echo "Setting up VSCode configuration..."
+VSCODE_CONFIG_DIR="$HOME/Library/Application Support/Code/User"
+mkdir -p "$VSCODE_CONFIG_DIR"
+cp -r ./VSCode/* "$VSCODE_CONFIG_DIR/"
+
 # Set up Catppuccin for tmux
 echo "Setting up Catppuccin for tmux..."
 mkdir -p ~/.tmux/plugins/catppuccin

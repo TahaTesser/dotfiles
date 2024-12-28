@@ -9,6 +9,7 @@ This is my dotfiles repository.
 - Install oh-my-zsh
 - Install Homebrew
 - Install Brew packages (ghostty, gh, swiftformat, tmux, bruno)
+- Install VSCode configuration
 - Install Tmux Plugin Manager
 - Install Catppuccin for tmux
 - Copy and source tmux configuration
