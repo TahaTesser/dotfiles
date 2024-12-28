@@ -26,6 +26,9 @@ alias m3gen="dart $HOME/flutter/dev/tools/gen_defaults/bin/gen_defaults.dart"
 alias vs="code ."
 alias cr="cursor ."
 
+# Delete .DS_Store files
+alias rmds="find . -name ".DS_Store" -print -delete"
+
 # API Keys
 export OPENAI_API_KEY="<OPENAI_API_KEY>"
 export ANTHROPIC_API_KEY="<ANTHROPIC_API_KEY>"
