@@ -61,6 +61,7 @@ git config --global user.email "tessertaha@gmail.com"
 
 # Git aliases
 git config --global alias.kt '!git commit --allow-empty -m "Kick tests"'
+git config --global alias.find-wip '!git fsck --unreachable | grep commit | cut -d" " -f3 | xargs git log --merges --no-walk --grep=WIP'
 
 # Create .hushlogin file to disable login message
 echo "Creating .hushlogin file..."
