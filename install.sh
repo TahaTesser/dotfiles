@@ -114,7 +114,7 @@ fi
 
 # Set up GitHub CLI aliases
 echo "Setting up GitHub CLI aliases..."
-gh alias set prw 'pr list -A TahaTessr -w'
+gh alias set prw 'pr list -A TahaTessr -w' --clobber
 
 # Set up Ghostty configuration
 echo "Setting up Ghostty configuration..."
