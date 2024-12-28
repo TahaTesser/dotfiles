@@ -35,6 +35,24 @@ brew tap leoafarias/fvm
 brew install fvm
 brew install bruno
 
+# Set up Catppuccin for tmux
+echo "Setting up Catppuccin for tmux..."
+mkdir -p ~/.tmux/plugins/catppuccin
+git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.tmux/plugins/catppuccin/tmux
+
+# Install TPM (Tmux Plugin Manager)
+echo "Installing TPM..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Copy and source tmux configuration
+echo "Setting up tmux configuration..."
+cp ./.tmux.conf "$HOME/.tmux.conf"
+tmux source "$HOME/.tmux.conf" 2>/dev/null || echo "Note: tmux configuration will be applied next time you start tmux"
+
+# Install TPM plugins
+echo "Installing TPM plugins..."
+~/.tmux/plugins/tpm/bin/install_plugins
+
 # Create FVM versions directory
 echo "Setting up FVM directory..."
 mkdir -p "$HOME/fvm/versions"
