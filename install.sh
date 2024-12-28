@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SETUP_FLUTTER=false  # Set this to true to include Flutter setup
+
 echo "Starting development environment setup..."
 
 # Check if zsh is installed first, since it's a prerequisite
@@ -31,14 +33,12 @@ echo "Installing packages..."
 brew install gh
 brew install swiftformat
 brew install tmux
-brew tap leoafarias/fvm
-brew install fvm
 brew install bruno
 
 # Set up Catppuccin for tmux
 echo "Setting up Catppuccin for tmux..."
 mkdir -p ~/.tmux/plugins/catppuccin
-git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.tmux/plugins/catppuccin/tmux
+git clone https://github.com/catppuccin/tmux.git ~/.tmux/plugins/catppuccin/tmux
 
 # Install TPM (Tmux Plugin Manager)
 echo "Installing TPM..."
@@ -52,10 +52,6 @@ tmux source "$HOME/.tmux.conf" 2>/dev/null || echo "Note: tmux configuration wil
 # Install TPM plugins
 echo "Installing TPM plugins..."
 ~/.tmux/plugins/tpm/bin/install_plugins
-
-# Create FVM versions directory
-echo "Setting up FVM directory..."
-mkdir -p "$HOME/fvm/versions"
 
 # Configure Git global settings
 echo "Setting up Git configuration..."
@@ -81,11 +77,6 @@ fi
 # Copy the new .zshrc file
 echo "Installing new .zshrc..."
 cp ./.zshrc "$HOME/.zshrc"
-
-# Create and setup flutter plugin
-echo "Setting up flutter plugin..."
-mkdir -p "$HOME/.oh-my-zsh/plugins/flutter"
-cp ./flutter.plugin.zsh "$HOME/.oh-my-zsh/plugins/flutter/flutter.plugin.zsh"
 
 # GitHub CLI setup
 echo "Setting up GitHub CLI..."
@@ -129,5 +120,11 @@ cp -r ./ghostty/themes "$GHOSTTY_CONFIG_DIR/themes"
 # Create Code directory
 echo "Creating Code directory..."
 mkdir -p "$HOME/Code"
+
+if [ "$SETUP_FLUTTER" = true ]; then
+    echo "Setting up Flutter..."
+    cd "$HOME" || exit
+    gh repo clone TahaTesser/flutter
+fi
 
 echo "Installation complete! Please restart your terminal or run 'source ~/.zshrc'"
