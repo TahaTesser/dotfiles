@@ -36,6 +36,30 @@ brew install swiftformat
 brew install tmux
 brew install bruno
 brew install helix
+brew install lazygit
+brew install neovim
+
+# Set up NvChad
+echo "Setting up NvChad..."
+if [ -d "$HOME/.config/nvim" ]; then
+    echo "Removing existing Neovim configuration..."
+    rm -rf "$HOME/.config/nvim"
+fi
+git clone https://github.com/NvChad/starter ~/.config/nvim
+echo "NvChad installed. You can run 'nvim' to complete the setup."
+
+# Set up Helix Catppuccin theme
+echo "Setting up Catppuccin theme for Helix..."
+HELIX_THEMES_DIR="$HOME/.config/helix/themes"
+mkdir -p "$HELIX_THEMES_DIR"
+
+# Download Catppuccin Mocha theme for Helix
+curl -o "$HELIX_THEMES_DIR/catppuccin_mocha.toml" https://raw.githubusercontent.com/catppuccin/helix/main/themes/default/catppuccin_mocha.toml
+
+# Create/update Helix config to use the theme
+HELIX_CONFIG_DIR="$HOME/.config/helix"
+mkdir -p "$HELIX_CONFIG_DIR"
+echo 'theme = "catppuccin_mocha"' > "$HELIX_CONFIG_DIR/config.toml"
 
 # Set up VSCode configuration
 echo "Setting up VSCode configuration..."
@@ -45,12 +69,22 @@ cp -r ./VSCode/* "$VSCODE_CONFIG_DIR/"
 
 # Set up Catppuccin for tmux
 echo "Setting up Catppuccin for tmux..."
-mkdir -p ~/.tmux/plugins/catppuccin
-git clone https://github.com/catppuccin/tmux.git ~/.tmux/plugins/catppuccin/tmux
+TMUX_CATPPUCCIN_DIR="$HOME/.tmux/plugins/catppuccin"
+if [ ! -d "$TMUX_CATPPUCCIN_DIR" ]; then
+    mkdir -p "$TMUX_CATPPUCCIN_DIR"
+    git clone https://github.com/catppuccin/tmux.git "$TMUX_CATPPUCCIN_DIR/tmux"
+else
+    echo "Catppuccin for tmux already installed, skipping..."
+fi
 
 # Install TPM (Tmux Plugin Manager)
 echo "Installing TPM..."
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+if [ ! -d "$TPM_DIR" ]; then
+    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+else
+    echo "TPM already installed, skipping..."
+fi
 
 # Copy and source tmux configuration
 echo "Setting up tmux configuration..."

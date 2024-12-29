@@ -8,7 +8,7 @@ This is my dotfiles repository.
 - Check if zsh is installed
 - Install oh-my-zsh
 - Install Homebrew
-- Install Brew packages (ghostty, gh, swiftformat, tmux, bruno, helix)
+- Install Brew packages (ghostty, gh, swiftformat, tmux, bruno, helix, neovim)
 - Install VSCode configuration
 - Install Tmux Plugin Manager
 - Install Catppuccin for tmux
@@ -38,7 +38,7 @@ This is my custom zsh configuration.
 
 - Set oh-my-zsh as default shell
 - Set apple theme
-- Add plugins (git, flutter, alias-finder, gh, brew)
+- Add plugins (git, flutter, alias-finder, gh, brew, helix, lazygit, neovim)
 - Add JAVA environment variables
 - Add Android environment variables
 - Add Flutter environment variables
