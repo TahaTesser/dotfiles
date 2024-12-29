@@ -35,6 +35,7 @@ brew install gh
 brew install swiftformat
 brew install tmux
 brew install bruno
+brew install helix
 
 # Set up VSCode configuration
 echo "Setting up VSCode configuration..."
