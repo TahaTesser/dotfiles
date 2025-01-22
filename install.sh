@@ -18,7 +18,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 if ! command -v brew >/dev/null 2>&1; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    
+
     # Add Homebrew to PATH for Apple Silicon Macs
     if [[ $(uname -m) == 'arm64' ]]; then
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
@@ -38,28 +38,6 @@ brew install bruno
 brew install helix
 brew install lazygit
 brew install neovim
-
-# Set up NvChad
-echo "Setting up NvChad..."
-if [ -d "$HOME/.config/nvim" ]; then
-    echo "Removing existing Neovim configuration..."
-    rm -rf "$HOME/.config/nvim"
-fi
-git clone https://github.com/NvChad/starter ~/.config/nvim
-echo "NvChad installed. You can run 'nvim' to complete the setup."
-
-# Set up Helix Catppuccin theme
-echo "Setting up Catppuccin theme for Helix..."
-HELIX_THEMES_DIR="$HOME/.config/helix/themes"
-mkdir -p "$HELIX_THEMES_DIR"
-
-# Download Catppuccin Mocha theme for Helix
-curl -o "$HELIX_THEMES_DIR/catppuccin_mocha.toml" https://raw.githubusercontent.com/catppuccin/helix/main/themes/default/catppuccin_mocha.toml
-
-# Create/update Helix config to use the theme
-HELIX_CONFIG_DIR="$HOME/.config/helix"
-mkdir -p "$HELIX_CONFIG_DIR"
-echo 'theme = "catppuccin_mocha"' > "$HELIX_CONFIG_DIR/config.toml"
 
 # Set up VSCode configuration
 echo "Setting up VSCode configuration..."
@@ -141,11 +119,11 @@ SSH_KEY="$HOME/.ssh/id_ed25519"
 if [ ! -f "$SSH_KEY" ]; then
     echo "Generating SSH key..."
     ssh-keygen -t ed25519 -C "$(git config --global user.email || echo 'you@example.com')" -f "$SSH_KEY" -N ""
-    
+
     # Start ssh-agent and add key
     eval "$(ssh-agent -s)"
     ssh-add "$SSH_KEY"
-    
+
     # Add SSH key to GitHub
     echo "Adding SSH key to GitHub..."
     gh ssh-key add "$SSH_KEY.pub" -t "dotfiles-setup-key"
