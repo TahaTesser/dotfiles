@@ -146,6 +146,22 @@ cp -r ./ghostty/themes "$GHOSTTY_CONFIG_DIR/themes"
 echo "Creating Code directory..."
 mkdir -p "$HOME/Code"
 
+# Setup Commit Confetti
+echo "Setting up Commit Confetti..."
+# Clone this repository or download the setup_commit_confetti.sh script
+git clone https://github.com/TahaTesser/CommitConfetti.git "$HOME/CommitConfetti"
+cd "$HOME/CommitConfetti" || exit
+
+# Make the script executable
+chmod +x setup_commit_confetti.sh
+
+# Run the setup script
+./setup_commit_confetti.sh
+
+# Clean up
+cd "$HOME" || exit
+rm -rf "$HOME/CommitConfetti"
+
 if [ "$SETUP_FLUTTER" = true ]; then
     echo "Setting up Flutter..."
     cd "$HOME" || exit
