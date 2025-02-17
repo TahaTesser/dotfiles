@@ -15,7 +15,7 @@ export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH":"$HOME/flutter/bin"
 export PATH="$PATH":"$HOME/flutter/bin/cache/dart-sdk/bin"
-export FLUTTER_GIT_URL="https://github.com/TahaTesser/flutter.git"
+export FLUTTER_GIT_URL="git@github.com:TahaTesser/flutter.git"
 
 # Flutter source and sample aliases
 alias ffp="cd ~ && cd $HOME/flutter/packages/flutter && flutter pub get"
@@ -25,6 +25,7 @@ alias m3gen="dart $HOME/flutter/dev/tools/gen_defaults/bin/gen_defaults.dart"
 # Editor aliases
 alias vs="code ."
 alias cr="cursor ."
+alias fcw="code $HOME/Code/flutter.code-workspace"
 
 # Delete .DS_Store files
 alias rmds="find . -name ".DS_Store" -print -delete"
