@@ -6,7 +6,6 @@
   "editor.fontLigatures": "'liga' on, 'calt' on, 'dlig' on'",
   "editor.occurrencesHighlight": "multiFile",
   "files.trimTrailingWhitespace": true,
-  "editor.semanticHighlighting.enabled": true,
   // github
   "github.copilot.enable": {
     "*": true,
@@ -18,8 +17,6 @@
   "git.enableSmartCommit": true,
   // githubPullRequests
   "githubPullRequests.pullBranch": "never",
-  // inlineChat
-  "inlineChat.mode": "live",
   // debug
   "debug.toolBarLocation": "commandCenter",
   // workbench
@@ -30,5 +27,5 @@
   // window
   "window.titleBarStyle": "custom",
   "git.blame.editorDecoration.enabled": true,
-  "git.blame.statusBarItem.enabled": true,
+  "git.blame.statusBarItem.enabled": true
 }
