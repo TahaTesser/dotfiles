@@ -1,6 +1,5 @@
 {
   // editor
-  "editor.accessibilitySupport": "off",
   "editor.fontFamily": "Monaspace Neon",
   "editor.inlayHints.fontFamily": "Monaspace Krypton",
   "editor.fontLigatures": "'liga' on, 'calt' on, 'dlig' on'",
@@ -15,8 +14,8 @@
   },
   // git
   "git.enableSmartCommit": true,
-  // githubPullRequests
-  "githubPullRequests.pullBranch": "never",
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.statusBarItem.enabled": true,
   // debug
   "debug.toolBarLocation": "commandCenter",
   // workbench
@@ -25,7 +24,5 @@
   // terminal
   "terminal.integrated.minimumContrastRatio": 1,
   // window
-  "window.titleBarStyle": "custom",
-  "git.blame.editorDecoration.enabled": true,
-  "git.blame.statusBarItem.enabled": true
+  "window.titleBarStyle": "custom"
 }

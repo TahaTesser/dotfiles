@@ -1,6 +1,6 @@
 {
-	"Material 3": {
-		"prefix": "m3",
+	"Flutter MaterialApp": {
+		"prefix": "fma",
 		"body": [
 			"import 'package:flutter/material.dart';",
 			"",
@@ -23,6 +23,6 @@
 			"}",
 			""
 		],
-		"description": "Material 3"
+		"description": "Flutter MaterialApp"
 	}
 }
