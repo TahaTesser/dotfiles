@@ -11,6 +11,9 @@ export PATH=$PATH:$JAVA_HOME/bin
 export ANDROID_SDK_ROOT=$HOME/android-sdk
 export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
 
+# androidx repo
+export PATH=~/bin:$PATH
+
 # Flutter, Dart, and FVM
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH":"$HOME/flutter/bin"
