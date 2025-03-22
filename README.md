@@ -8,12 +8,8 @@ This is my dotfiles repository.
 - Check if zsh is installed
 - Install oh-my-zsh
 - Install Homebrew
-- Install Brew packages (ghostty, gh, swiftformat, tmux, bruno, helix, neovim)
+- Install Brew packages (ghostty, gh, swiftformat, bruno, helix, neovim)
 - Install VSCode configuration
-- Install Tmux Plugin Manager
-- Install Catppuccin for tmux
-- Copy and source tmux configuration
-- Install TPM plugins
 - Configure Git user name and email
 - Configure Git aliases:
   - `git kt`: Create empty commit to trigger tests
