@@ -1,63 +1,101 @@
 # dotfiles
 
-This is my dotfiles repository.
+This repository contains my personal dotfiles and development environment setup scripts.
 
-## install.sh
+## Quick Start
 
-- Create SETUP_FLUTTER variable and set to false
-- Check if zsh is installed
-- Install oh-my-zsh
-- Install Homebrew
-- Install Brew packages (ghostty, gh, swiftformat, bruno, helix, neovim)
-- Install VSCode configuration
-- Configure Git user name and email
-- Configure Git aliases:
+Run the complete setup:
+```bash
+./install.sh
+```
+
+Or run individual components:
+```bash
+./scripts/brew.sh           # Install Homebrew and packages
+./scripts/git.sh            # Configure Git settings
+./scripts/setup-ssh.sh      # Set up SSH keys
+./scripts/vscode.sh         # Install VSCode configuration
+./scripts/zsh.sh            # Set up Zsh and Oh My Zsh
+./scripts/ghostty.sh        # Configure Ghostty terminal
+./scripts/commit-confetti.sh # Install Commit Confetti
+```
+
+## Scripts Overview
+
+### `install.sh`
+Main installation script that orchestrates all individual setup scripts in the correct order.
+
+### `scripts/brew.sh`
+- Installs Homebrew (if not present)
+- Installs packages: ghostty, gh (GitHub CLI), swiftformat
+- Configures Homebrew PATH for Apple Silicon Macs
+
+### `scripts/git.sh`
+- Sets Git global user name and email (Taha Tesser)
+- Configures Git aliases:
   - `git kt`: Create empty commit to trigger tests
-- Create .hushlogin file to disable login message
-- Backup existing .zshrc if it exists
-- Copy .zshrc to home directory
-- Backup and update Oh My Zsh Flutter plugin
-- Authenticate with GitHub CLI
-- Generate SSH key if not already existing
-- Check GitHub CLI is installed
-- Authenticate with GitHub CLI
-- Generate SSH key if not already existing
-- Add SSH key to GitHub
-- Set up Ghostty configuration (themes and config)
-- Create Code directory
-- Clone Flutter repository if SETUP_FLUTTER is true
-- Print completion message
+  - `git find-wip`: Find orphaned WIP commits
 
-## .zshrc
+### `scripts/setup-ssh.sh`
+- Authenticates with GitHub CLI
+- Generates ed25519 SSH key (if not existing)
+- Adds SSH key to ssh-agent
+- Registers SSH key with GitHub
+- Can be used standalone for quick SSH setup
 
-This is my custom zsh configuration.
+### `scripts/vscode.sh`
+- Copies VSCode settings and snippets to user configuration directory
 
-- Set oh-my-zsh as default shell
-- Set apple theme
-- Add plugins (git, flutter, alias-finder, gh, brew, helix, lazygit, neovim)
-- Add JAVA environment variables
-- Add Android environment variables
-- Add Flutter environment variables
-- Add Flutter source, sample and editor aliases
-- Add API Keys for OpenAI and Anthropic
+### `scripts/zsh.sh`
+- Checks for zsh installation
+- Installs Oh My Zsh
+- Creates .hushlogin file to disable login message
+- Backs up existing .zshrc
+- Installs custom .zshrc configuration
 
-## .tmux.conf
+### `scripts/ghostty.sh`
+- Creates Ghostty configuration directory
+- Downloads Catppuccin Mocha theme from official GitHub repository
+- Sets up theme configuration
 
-This is my custom tmux configuration.
+### `scripts/commit-confetti.sh`
+- Clones and installs Commit Confetti for celebratory git commits
+- Automatically cleans up temporary files
 
-- Add TPM plugins (tpm, tmux-powerline, tmux-cpu, tmux-battery)
-- Set mouse to on
-- Set default terminal to tmux-256color
-- Add catppuccin plugin
-- Set status line to pretty and add some modules
-- Add cpu and battery plugins
+## Configuration Files
 
-## ghostty/config
+### VSCode
+- Custom settings in `VSCode/settings.json`
+- Dart snippets in `VSCode/snippets/dart.json`
 
-This is my custom ghostty configuration.
+### Zsh
+- Custom `.zshrc` configuration with Oh My Zsh setup
 
-- Set theme to Apple System Colors
-- Set font size to 18
-- Set window height to 36
-- Set window width to 110
-- Set title to "Ghostty"
+### Ghostty
+- Catppuccin Mocha theme downloaded automatically during setup
+- No local theme files stored in repository
+
+## What Gets Installed
+
+- **Homebrew**: Package manager for macOS
+- **Ghostty**: Terminal emulator with Catppuccin Mocha theme
+- **GitHub CLI**: Command-line tool for GitHub
+- **SwiftFormat**: Swift code formatter
+- **Oh My Zsh**: Framework for managing Zsh configuration
+- **VSCode**: Custom settings and Dart snippets
+- **SSH Keys**: Ed25519 key pair for GitHub authentication
+- **Git Configuration**: User settings and helpful aliases
+- **Commit Confetti**: Fun celebration effects for git commits
+
+## Requirements
+
+- macOS (tested on Apple Silicon)
+- Internet connection for downloading dependencies
+- Zsh shell
+
+## Notes
+
+- All scripts can be run individually or as part of the complete setup
+- Existing configurations are backed up before being replaced
+- SSH key generation is skipped if keys already exist
+- Homebrew installation is skipped if already installed
