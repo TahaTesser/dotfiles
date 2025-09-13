@@ -1,6 +1,4 @@
 theme = catppuccin-mocha
-font-size = 18
-window-height = 36
-window-width = 110
-title = "Ghostty"
 font-family = "JetBrainsMono Nerd Font"
+font-size = 18
+auto-update-channel = tip
