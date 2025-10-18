@@ -19,5 +19,6 @@ fi
 # Install required packages
 echo "Installing packages..."
 brew install gh go
+brew install --cask temurin@17
 
 echo "Homebrew setup complete!"

@@ -4,8 +4,8 @@ plugins=(git gh)
 source $ZSH/oh-my-zsh.sh
 
 # JAVA
-export JAVA_HOME="/Users/tahatesser/jdk/Contents/Home"
-export PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
 
 # Android SDK
 export ANDROID_SDK_ROOT=$HOME/android-sdk

@@ -27,7 +27,7 @@ Main installation script that orchestrates all individual setup scripts in the c
 ### `scripts/brew.sh`
 - Installs Homebrew if it's not already available
 - Adds Homebrew to the PATH on Apple Silicon machines
-- Installs core CLI tooling (`gh`, `go`)
+- Installs core CLI tooling (`gh`, `go`) and the Temurin 17 JDK cask
 
 ### `scripts/git.sh`
 - Sets Git global user name and email (Taha Tesser)
@@ -58,7 +58,7 @@ Main installation script that orchestrates all individual setup scripts in the c
 
 ### `.zshrc`
 - Configures Oh My Zsh with the `apple` theme and `git`/`gh` plugins
-- Exports development tool paths (Java, Android SDK, Go, NVM)
+- Sets `JAVA_HOME` to the Homebrew Temurin 17 JDK and exports Android SDK, Go, and NVM paths
 - Provides placeholders for OpenAI and Anthropic API keys
 
 ### `ghostty/config`
@@ -67,7 +67,7 @@ Main installation script that orchestrates all individual setup scripts in the c
 
 ## What Gets Installed
 
-- **Homebrew** (if missing) along with the GitHub CLI (`gh`) and Go toolchain (`go`)
+- **Homebrew** (if missing) along with the GitHub CLI (`gh`), Go toolchain (`go`), and Temurin 17 JDK (`temurin@17`)
 - **Git Configuration**: Global name/email and a `kt` alias for empty commits
 - **SSH Keys**: Ed25519 key pair and optional GitHub registration
 - **Zsh Setup**: Oh My Zsh plus the repository `.zshrc`
