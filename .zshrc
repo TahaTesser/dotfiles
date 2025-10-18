@@ -1,38 +1,27 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="apple"
-plugins=(git flutter alias-finder gh brew xcode)
+plugins=(git gh)
 source $ZSH/oh-my-zsh.sh
 
 # JAVA
-export JAVA_HOME="/Applications/Android Studio Preview.app/Contents/jbr/Contents/Home"
-export PATH=$PATH:$JAVA_HOME/bin
+export JAVA_HOME="/Users/tahatesser/jdk/Contents/Home"
+export PATH=$JAVA_HOME/bin:$PATH
 
 # Android SDK
 export ANDROID_SDK_ROOT=$HOME/android-sdk
 export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
 
-# androidx repo
-export PATH=~/bin:$PATH
-
-# Flutter, Dart, and FVM
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-export PATH="$PATH":"$HOME/flutter/bin"
-export PATH="$PATH":"$HOME/flutter/bin/cache/dart-sdk/bin"
-export FLUTTER_GIT_URL="git@github.com:TahaTesser/flutter.git"
-
-# Flutter source and sample aliases
-alias ffp="cd ~ && cd $HOME/flutter/packages/flutter && flutter pub get"
-alias fpp="cd ~ && cd $HOME/Code/flutter_playground && flutter pub get"
-alias m3gen="dart $HOME/flutter/dev/tools/gen_defaults/bin/gen_defaults.dart"
-alias axs="cd $HOME/Code/androidx-main/frameworks/support/ && ANDROIDX_PROJECTS=COMPOSE ./gradlew studio"
-
-# Editor aliases
-alias vs="code ."
-alias cr="cursor ."
-alias fcw="code $HOME/Code/flutter_playground/flutter.code-workspace"
-
 # Delete .DS_Store files
 alias rmds="find . -name ".DS_Store" -print -delete"
+
+# Go language
+export PATH=$HOME/go/bin:$PATH
+export PATH=/Users/tahatesser/.local/bin:$PATH
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # API Keys
 export OPENAI_API_KEY="<OPENAI_API_KEY>"

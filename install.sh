@@ -12,9 +12,6 @@ echo "Running zsh setup..."
 echo "Running Homebrew setup..."
 "$SCRIPT_DIR/scripts/brew.sh"
 
-echo "Running VSCode setup..."
-"$SCRIPT_DIR/scripts/vscode.sh"
-
 echo "Running Git configuration..."
 "$SCRIPT_DIR/scripts/git.sh"
 

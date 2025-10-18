@@ -1,4 +1,3 @@
-theme = catppuccin-mocha
+theme = catppuccin-mocha.conf
 font-family = "JetBrainsMono Nerd Font"
 font-size = 18
-auto-update-channel = tip

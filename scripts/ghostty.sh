@@ -17,8 +17,9 @@ cp "$DOTFILES_DIR/ghostty/config" "$GHOSTTY_CONFIG_DIR/config"
 # Clone catppuccin ghostty themes
 echo "Installing Catppuccin themes for Ghostty..."
 git clone https://github.com/catppuccin/ghostty.git /tmp/catppuccin-ghostty
-mkdir -p "$GHOSTTY_CONFIG_DIR/themes"
-cp /tmp/catppuccin-ghostty/themes/catppuccin-mocha.conf "$GHOSTTY_CONFIG_DIR/themes/"
+GHOSTTY_THEME_DIR="$HOME/.config/ghostty/themes"
+mkdir -p "$GHOSTTY_THEME_DIR"
+cp /tmp/catppuccin-ghostty/themes/catppuccin-mocha.conf "$GHOSTTY_THEME_DIR/"
 rm -rf /tmp/catppuccin-ghostty
 
 echo "Ghostty configuration complete!"

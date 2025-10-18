@@ -18,8 +18,6 @@ fi
 
 # Install required packages
 echo "Installing packages..."
-brew install --cask ghostty
-brew install gh
-brew install swiftformat
+brew install gh go
 
 echo "Homebrew setup complete!"
