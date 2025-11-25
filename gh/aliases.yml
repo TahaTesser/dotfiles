@@ -1,0 +1,123 @@
+# GitHub CLI Aliases
+# Import this file using: gh alias import aliases.yml
+
+rwt: |-
+    !id="$1"; base="../worktrees"; \
+    if [ -z "${id}" ]; then \
+      echo "Usage: gh rwt <PR-number|branch-name>"; \
+      echo "  PR number: Remove worktree and branch pr-<number>"; \
+      echo "  Branch name: Remove worktree and branch"; \
+      exit 1; \
+    fi; \
+    if printf "%s" "${id}" | grep -Eq "^[0-9]+$"; then \
+      branch="pr-${id}"; \
+      action_type="PR #${id}"; \
+    else \
+      branch="${id}"; \
+      action_type="branch '${branch}'"; \
+    fi; \
+    dir="${base}/${branch}"; \
+    echo ""; \
+    echo "🗑️  WARNING: This will DELETE the following:"; \
+    echo "   📁 Worktree directory: ${dir}"; \
+    echo "   🌿 Branch: ${branch}"; \
+    echo ""; \
+    read -p "❓ Are you sure you want to remove ${action_type}? (yes/no): " confirm; \
+    if [ "$confirm" != "yes" ]; then \
+      echo "❌ Cancelled. Nothing was removed."; \
+      exit 0; \
+    fi; \
+    echo ""; \
+    echo "🗑️  Removing worktree and branch: ${branch}"; \
+    # try to locate registered worktree for the branch
+    wtpath=$(git worktree list --porcelain | grep -B1 "branch refs/heads/$branch" | sed -n "1s/^worktree //p"); \
+    if [ -n "$wtpath" ]; then \
+      echo "✅ Found registered worktree at $wtpath"; \
+      git worktree remove "$wtpath" --force || echo "❌ failed to remove registered worktree at $wtpath"; \
+    else \
+      echo "🔍 No registered worktree found by search for $branch; trying candidate paths..."; \
+      # try repo-relative path first
+      if git worktree remove "$dir" --force 2>/dev/null; then \
+        echo "✅ Removed registered worktree at $dir"; \
+        wtpath="$dir"; \
+      else \
+        # try absolute path by resolving relative to repo pwd
+        abs="$(pwd)/$dir"; \
+        if git worktree remove "$abs" --force 2>/dev/null; then \
+          echo "✅ Removed registered worktree at $abs"; \
+          wtpath="$abs"; \
+        else \
+          echo "⚠️  Could not remove registered worktree by candidate paths (you can try: git worktree list --porcelain)"; \
+        fi; \
+      fi; \
+    fi; \
+    # remove directory if still exists
+    if [ -d "$dir" ]; then echo "🗑️  Removing directory $dir"; rm -rf "$dir"; fi; \
+    # finally delete branch if present
+    if git show-ref --quiet "refs/heads/$branch"; then echo "🗑️  Deleting branch $branch"; git branch -D "$branch"; else echo "ℹ️  Branch $branch does not exist"; fi; \
+    # clean parent folder if empty
+    rmdir "$base" 2>/dev/null || true; echo "✅ Cleanup complete for ${id}"
+
+awt: |-
+    !id="$1"; base="../worktrees"; \
+    if [ -z "${id}" ]; then \
+      echo "Usage: gh awt <PR-number|branch-name>"; \
+      echo "  PR number: Fetch PR and create branch pr-<number> in worktree"; \
+      echo "  Branch name: Create new local branch in worktree"; \
+      exit 1; \
+    fi; \
+    mkdir -p "${base}"; \
+    if printf "%s" "${id}" | grep -Eq "^[0-9]+$"; then \
+      branch="pr-${id}"; \
+      dir="${base}/${branch}"; \
+      action_type="PR #${id}"; \
+      echo ""; \
+      echo "📥 This will:"; \
+      echo "   🔄 Fetch PR #${id} from origin"; \
+      echo "   🌿 Create branch: ${branch}"; \
+      echo "   📁 Create worktree at: ${dir}"; \
+      echo ""; \
+      read -p "❓ Proceed with fetching ${action_type}? (yes/no): " confirm; \
+      if [ "$confirm" != "yes" ]; then \
+        echo "❌ Cancelled. Nothing was created."; \
+        exit 0; \
+      fi; \
+      echo ""; \
+      echo "📥 Fetching PR ${id} and creating worktree at ${dir} (branch ${branch})"; \
+      git fetch origin "pull/${id}/head" || true; \
+      if git worktree add -b "${branch}" "${dir}" FETCH_HEAD 2>/dev/null; then \
+        echo "✅ Worktree created at ${dir} (branch ${branch})"; \
+      else \
+        if git rev-parse --verify "refs/remotes/origin/pr/${id}" >/dev/null 2>&1; then \
+          git worktree add -b "${branch}" "${dir}" "refs/remotes/origin/pr/${id}" \
+            && echo "✅ Worktree created at ${dir} (branch ${branch})" \
+            || echo "❌ Failed to create worktree for PR ${id}"; \
+        else \
+          echo "❌ Failed to create worktree for PR ${id}"; \
+        fi; \
+      fi; \
+    else \
+      branch="${id}"; \
+      dir="${base}/${branch}"; \
+      action_type="branch '${branch}'"; \
+      echo ""; \
+      echo "🆕 This will:"; \
+      echo "   🌿 Create new branch: ${branch}"; \
+      echo "   📁 Create worktree at: ${dir}"; \
+      echo ""; \
+      read -p "❓ Proceed with creating ${action_type}? (yes/no): " confirm; \
+      if [ "$confirm" != "yes" ]; then \
+        echo "❌ Cancelled. Nothing was created."; \
+        exit 0; \
+      fi; \
+      echo ""; \
+      echo "🆕 Creating new local branch '${branch}' in worktree ${dir}"; \
+      if [ -d "${dir}" ]; then \
+        echo "❌ Error: Worktree directory ${dir} already exists"; \
+        exit 1; \
+      fi; \
+      git worktree add -b "${branch}" "${dir}" HEAD \
+        && echo "✅ Worktree created at ${dir} (new branch ${branch})" \
+        || echo "❌ Failed to create worktree for new branch ${branch}"; \
+    fi
+

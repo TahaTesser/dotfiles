@@ -65,6 +65,14 @@ Main installation script that orchestrates all individual setup scripts in the c
 - Points Ghostty at the Catppuccin Mocha theme
 - Sets JetBrainsMono Nerd Font at size 18
 
+### `gh/`
+- GitHub CLI configuration and aliases
+- `aliases.yml` - Custom aliases (awt, rwt) for managing git worktrees
+- `config.yml` - Main GitHub CLI configuration
+- `hosts.yml` - Host-specific GitHub settings
+- `sync-aliases.sh` - Helper script to sync aliases from aliases.yml
+- See `gh/README.md` for detailed documentation
+
 ## What Gets Installed
 
 - **Homebrew** (if missing) along with the GitHub CLI (`gh`), Go toolchain (`go`), and Temurin 17 JDK (`temurin@17`)
