@@ -1,3 +1,13 @@
-theme = catppuccin-mocha.conf
-font-family = "JetBrainsMono Nerd Font"
-font-size = 18
+font-family = "JetBrains Mono"
+font-size = 13
+font-thicken = true
+
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+
+window-padding-x = 10
+window-padding-y = 10
+background-opacity = 0.80
+background-blur-radius = 10
+
+unfocused-split-opacity = 0.80
+split-divider-color = #ff8700
