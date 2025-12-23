@@ -65,6 +65,9 @@ Main installation script that orchestrates all individual setup scripts in the c
 - Points Ghostty at the Catppuccin Mocha theme
 - Sets JetBrainsMono Nerd Font at size 18
 
+### `git-hooks/`
+- `pre-commit` - Formats staged Swift files with `swift format` and re-adds them
+
 ### `gh/`
 - GitHub CLI configuration and aliases
 - `aliases.yml` - Custom aliases (awt, rwt) for managing git worktrees
@@ -94,3 +97,4 @@ Main installation script that orchestrates all individual setup scripts in the c
 - Existing configurations are backed up before being replaced
 - SSH key generation is skipped if keys already exist
 - Homebrew installation is skipped if already installed
+- To enable the Swift formatter hook, symlink `git-hooks/pre-commit` to `.git/hooks/pre-commit`

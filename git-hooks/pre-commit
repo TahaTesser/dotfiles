@@ -1,0 +1,16 @@
+#!/bin/bash
+
+GIT=/usr/bin/git
+GREP=/usr/bin/grep
+SWIFT=/usr/bin/swift
+
+# Staged (cached) added/copied/modified/renamed files
+FILES=$($GIT diff --cached --name-only --diff-filter=ACMR | $GREP '\.swift$')
+
+# Exit early if no staged files
+if [ -z "$FILES" ]; then
+  exit 0
+fi
+
+$SWIFT format --in-place --parallel $FILES
+$GIT add $FILES
