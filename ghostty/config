@@ -1,5 +1,5 @@
 font-family = "JetBrains Mono"
-font-size = 13
+font-size = 18
 font-thicken = true
 
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
@@ -11,3 +11,6 @@ background-blur-radius = 10
 
 unfocused-split-opacity = 0.80
 split-divider-color = #ff8700
+keybind = shift+enter=text:\x1b\r
+
+auto-update-channel = tip
