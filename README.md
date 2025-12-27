@@ -13,6 +13,7 @@ Or run individual components:
 ```bash
 ./scripts/brew.sh           # Install Homebrew (if needed) and CLI tools
 ./scripts/git.sh            # Configure Git settings
+./scripts/gh.sh             # Configure GitHub CLI and aliases
 ./scripts/setup-ssh.sh      # Generate SSH keys and register with GitHub
 ./scripts/zsh.sh            # Install Oh My Zsh and copy .zshrc
 ./scripts/ghostty.sh        # Configure Ghostty and Catppuccin theme
@@ -32,6 +33,10 @@ Main installation script that orchestrates all individual setup scripts in the c
 ### `scripts/git.sh`
 - Sets Git global user name and email (Taha Tesser)
 - Adds a `kt` alias for creating an empty "Kick tests" commit
+
+### `scripts/gh.sh`
+- Copies GitHub CLI config and alias scripts to `~/.config/gh/`
+- Aliases include `awt`/`rwt` for git worktree management
 
 ### `scripts/setup-ssh.sh`
 - Ensures Git global identity matches the repository defaults
@@ -61,25 +66,23 @@ Main installation script that orchestrates all individual setup scripts in the c
 - Sets `JAVA_HOME` to the Homebrew Temurin 17 JDK and exports Android SDK, Go, and NVM paths
 - Provides placeholders for OpenAI and Anthropic API keys
 
-### `ghostty/config`
+### `.config/ghostty/config`
 - Points Ghostty at the Catppuccin Mocha theme
 - Sets JetBrainsMono Nerd Font at size 18
 
+### `.config/gh/`
+- `config.yml` - GitHub CLI settings and aliases
+- `scripts/` - External scripts for complex aliases (awt.sh, rwt.sh)
+- See `.config/gh/README.md` for alias documentation
+
 ### `git-hooks/`
 - `pre-commit` - Formats staged Swift files with `swift format` and re-adds them
-
-### `gh/`
-- GitHub CLI configuration and aliases
-- `aliases.yml` - Custom aliases (awt, rwt) for managing git worktrees
-- `config.yml` - Main GitHub CLI configuration
-- `hosts.yml` - Host-specific GitHub settings
-- `sync-aliases.sh` - Helper script to sync aliases from aliases.yml
-- See `gh/README.md` for detailed documentation
 
 ## What Gets Installed
 
 - **Homebrew** (if missing) along with the GitHub CLI (`gh`), Go toolchain (`go`), and Temurin 17 JDK (`temurin@17`)
 - **Git Configuration**: Global name/email and a `kt` alias for empty commits
+- **GitHub CLI**: Config and worktree aliases (`awt`, `rwt`)
 - **SSH Keys**: Ed25519 key pair and optional GitHub registration
 - **Zsh Setup**: Oh My Zsh plus the repository `.zshrc`
 - **Ghostty Theme**: Catppuccin Mocha applied to the local Ghostty config

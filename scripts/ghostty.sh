@@ -12,7 +12,7 @@ mkdir -p "$GHOSTTY_CONFIG_DIR"
 
 # Copy main config from dotfiles
 echo "Copying Ghostty config from dotfiles..."
-cp "$DOTFILES_DIR/ghostty/config" "$GHOSTTY_CONFIG_DIR/config"
+cp "$DOTFILES_DIR/.config/ghostty/config" "$GHOSTTY_CONFIG_DIR/config"
 
 # Clone catppuccin ghostty themes
 echo "Installing Catppuccin themes for Ghostty..."
